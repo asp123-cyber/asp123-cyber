@@ -1,0 +1,64 @@
+name: Refresh profile activity
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 3 * * *"
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/snake.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: profile-activity
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+
+      - name: Prepare output directory
+        run: mkdir -p assets/activity
+
+      - name: Render light and dark contribution calendars
+        uses: Platane/snk/svg-only@v3
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          outputs: |
+            assets/activity/snake.svg
+            assets/activity/snake-dark.svg?palette=github-dark
+
+      - name: Render public activity card
+        uses: stats-organization/github-readme-stats-action@v2
+        with:
+          card: stats
+          options: username=${{ github.repository_owner }}&theme=tokyonight&hide_border=true&hide_rank=true&show_icons=true
+          path: assets/activity/stats.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fail_on_error: "true"
+
+      - name: Render public language card
+        uses: stats-organization/github-readme-stats-action@v2
+        with:
+          card: top-langs
+          options: username=${{ github.repository_owner }}&theme=tokyonight&hide_border=true&layout=compact&langs_count=5
+          path: assets/activity/languages.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fail_on_error: "true"
+
+      - name: Save refreshed artwork
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- assets/activity/
+          if ! git diff --cached --quiet; then
+            git commit -m "Refresh profile activity artwork"
+            git push origin HEAD:"${{ github.event.repository.default_branch }}"
+          fi
