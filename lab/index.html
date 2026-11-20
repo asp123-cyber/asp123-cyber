@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#17151f">
+  <meta name="description" content="Explore single-qubit encoding, fidelity kernels and matched classical features on a reproducible two-class problem.">
+  <title>One qubit, two classes · Ashish Patel</title>
+  <style>
+@font-face{font-family:'Study Serif';font-style:normal;font-weight:400;font-display:swap;src:url(data:font/woff;base64,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) format('woff')}
+@font-face{font-family:'Study Serif';font-style:italic;font-weight:400;font-display:swap;src:url(data:font/woff;base64,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) format('woff')}
+/* Instrument Serif, subset for this title.
+Copyright 2022 The Instrument Serif Project Authors (https://github.com/Instrument/instrument-serif)
+
+This Font Software is licensed under the SIL Open Font License, Version 1.1.
+This license is copied below, and is also available with a FAQ at:
+https://scripts.sil.org/OFL
+
+
+-----------------------------------------------------------
+SIL OPEN FONT LICENSE Version 1.1 - 26 February 2007
+-----------------------------------------------------------
+
+PREAMBLE
+The goals of the Open Font License (OFL) are to stimulate worldwide
+development of collaborative font projects, to support the font creation
+efforts of academic and linguistic communities, and to provide a free and
+open framework in which fonts may be shared and improved in partnership
+with others.
+
+The OFL allows the licensed fonts to be used, studied, modified and
+redistributed freely as long as they are not sold by themselves. The
+fonts, including any derivative works, can be bundled, embedded, 
+redistributed and/or sold with any software provided that any reserved
+names are not used by derivative works. The fonts and derivatives,
+however, cannot be released under any other type of license. The
+requirement for fonts to remain under this license does not apply
+to any document created using the fonts or their derivatives.
+
+DEFINITIONS
+"Font Software" refers to the set of files released by the Copyright
+Holder(s) under this license and clearly marked as such. This may
+include source files, build scripts and documentation.
+
+"Reserved Font Name" refers to any names specified as such after the
+copyright statement(s).
+
+"Original Version" refers to the collection of Font Software components as
+distributed by the Copyright Holder(s).
+
+"Modified Version" refers to any derivative made by adding to, deleting,
+or substituting -- in part or in whole -- any of the components of the
+Original Version, by changing formats or by porting the Font Software to a
+new environment.
+
+"Author" refers to any designer, engineer, programmer, technical
+writer or other person who contributed to the Font Software.
+
+PERMISSION & CONDITIONS
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of the Font Software, to use, study, copy, merge, embed, modify,
+redistribute, and sell modified and unmodified copies of the Font
+Software, subject to the following conditions:
+
+1) Neither the Font Software nor any of its individual components,
+in Original or Modified Versions, may be sold by itself.
+
+2) Original or Modified Versions of the Font Software may be bundled,
+redistributed and/or sold with any software, provided that each copy
+contains the above copyright notice and this license. These can be
+included either as stand-alone text files, human-readable headers or
+in the appropriate machine-readable metadata fields within text or
+binary files as long as those fields can be easily viewed by the user.
+
+3) No Modified Version of the Font Software may use the Reserved Font
+Name(s) unless explicit written permission is granted by the corresponding
+Copyright Holder. This restriction only applies to the primary font name as
+presented to the users.
+
+4) The name(s) of the Copyright Holder(s) or the Author(s) of the Font
+Software shall not be used to promote, endorse or advertise any
+Modified Version, except to acknowledge the contribution(s) of the
+Copyright Holder(s) and the Author(s) or with their explicit written
+permission.
+
+5) The Font Software, modified or unmodified, in part or in whole,
+must be distributed entirely under this license, and must not be
+distributed under any other license. The requirement for fonts to
+remain under this license does not apply to any document created
+using the Font Software.
+
+TERMINATION
+This license becomes null and void if any of the above conditions are
+not met.
+
+DISCLAIMER
+THE FONT SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT
+OF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL THE
+COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+INCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL
+DAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM
+OTHER DEALINGS IN THE FONT SOFTWARE.
+
+
+*/
+:root {
+  color-scheme: light dark;
+  --page:#f7f5f1; --ink:#26222f; --secondary:#554e61; --muted:#686172;
+  --panel:#fffefa; --inset:#f4f1f6; --rule:#dcd7df; --grid:#e5e1e7;
+  --purple:#6743a1; --warm:#985329; --focus:#573891; --active:#292332; --on-active:#fffaf3;
+  --sans:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --serif:"Study Serif",Georgia,serif; --mono:ui-monospace,"SFMono-Regular",Consolas,monospace;
+}
+@media (prefers-color-scheme:dark) {
+  :root {
+    --page:#141219; --ink:#f2ebed; --secondary:#c7bfce; --muted:#ada3b6;
+    --panel:#1b1822; --inset:#241e2c; --rule:#3c3543; --grid:#35303d;
+    --purple:#c5abff; --warm:#efad7d; --focus:#d1b4ff; --active:#dac7fa; --on-active:#24192d;
+  }
+}
+*{box-sizing:border-box}
+html{font-family:var(--sans);background:var(--page);color:var(--ink)}
+body{max-width:1120px;margin:auto;padding:0 clamp(16px,5vw,62px) 42px}
+a{color:inherit;text-underline-offset:4px}
+a:hover{color:var(--purple)}
+a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{outline:2px solid var(--focus);outline-offset:4px}
+nav{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--rule);min-height:65px;gap:12px}
+nav a{font-size:.83rem;font-weight:600;text-decoration:none}
+nav a:last-child{font-weight:450;color:var(--secondary)}
+header{margin:clamp(28px,5vw,55px) 0 26px}
+.eyebrow,.panel-title,.caption{font-family:var(--mono);font-size:.73rem;letter-spacing:.09em;text-transform:uppercase}
+.eyebrow{color:var(--purple);margin:0 0 9px}
+h1{font:normal clamp(3.05rem,7.9vw,6rem)/.99 var(--serif);letter-spacing:-.035em;margin:0 0 14px}
+h1 em{font-weight:400}
+header .intro{max-width:65ch;line-height:1.55;font-size:clamp(.95rem,1.7vw,1.06rem);color:var(--secondary);margin:0}
+.experiment{background:var(--panel);border:1px solid var(--rule);border-radius:16px;overflow:hidden}
+.toolbar{display:flex;align-items:center;gap:12px 20px;padding:16px 22px;border-bottom:1px solid var(--rule);flex-wrap:wrap}
+fieldset{border:0;padding:0;margin:0;display:flex;gap:6px;align-items:center}
+fieldset legend{float:left;margin-right:12px;padding:7px 0;font-weight:600;font-size:.87rem}
+fieldset label{position:relative}
+fieldset input{position:absolute;opacity:0}
+fieldset span{min-width:42px;padding:6px 10px;display:block;border:1px solid var(--rule);border-radius:6px;text-align:center;font:500 .9rem var(--mono);cursor:pointer}
+fieldset input:checked+span{background:var(--active);color:var(--on-active);border-color:var(--active)}
+fieldset input:focus-visible+span{outline:2px solid var(--focus);outline-offset:3px}
+.formula{font:normal .88rem var(--mono);color:var(--secondary);margin-left:auto}
+.views{display:grid;grid-template-columns:minmax(0,2.7fr) minmax(165px,1fr)}
+.score-view,.state-view{padding:21px 22px 12px;min-width:0}
+.state-view{border-left:1px solid var(--rule)}
+.panel-title{font-weight:500;color:var(--muted);margin:0 0 10px}
+svg{max-width:100%;display:block;overflow:visible}
+#scores{width:100%;cursor:crosshair;touch-action:pan-y}
+#state{height:137px;width:100%;margin:0 auto}
+svg text{font:12px var(--mono);fill:var(--muted)}
+.grid-line{stroke:var(--grid);stroke-width:1}
+.zero-line{stroke:var(--muted);stroke-width:1;stroke-dasharray:4 5}
+.quantum-line{fill:none;stroke:var(--purple);stroke-width:3;stroke-linejoin:round}
+.linear-line{fill:none;stroke:var(--warm);stroke-width:2;stroke-dasharray:5 4}
+.cursor{stroke:var(--muted);stroke-dasharray:2 4;stroke-width:1.3}
+.truth{fill:var(--muted);opacity:.58}
+.legend{display:flex;flex-wrap:wrap;gap:6px 15px;font-size:.77rem;color:var(--secondary);margin:7px 0}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.sample-line{width:18px;border-top:3px solid var(--purple)}
+.sample-dash{width:18px;border-top:2px dashed var(--warm)}
+.sample-dot{font-size:.7rem;color:var(--muted)}
+.prob{font:normal .84rem var(--mono);text-align:center;margin:10px 0 0;color:var(--secondary)}
+.probe{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:13px 22px;border-top:1px solid var(--rule);background:var(--inset)}
+.probe label{font-size:.87rem;font-weight:600}
+input[type=range]{accent-color:var(--purple);flex:1;min-width:110px;max-width:370px;cursor:pointer}
+output{font:normal .88rem var(--mono);min-width:3.2em}
+#prediction{font-size:.81rem;color:var(--secondary);margin-left:auto}
+.results{margin-top:22px}
+.result-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+h2{font-size:1.1rem;letter-spacing:-.025em;margin:0}
+.result-head small{color:var(--muted);font-size:.79rem}
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);margin:13px 0 0;border-block:1px solid var(--rule)}
+.metric{padding:14px 18px 14px 0}
+.metric+.metric{padding-left:19px;border-left:1px solid var(--rule)}
+dt{font-size:.87rem;color:var(--secondary)}
+dd{margin:4px 0 0;font:normal clamp(1.4rem,3.5vw,2.1rem) var(--mono);letter-spacing:-.055em;font-variant-numeric:tabular-nums}
+#interpretation{font-size:.9rem;line-height:1.6;max-width:78ch;color:var(--secondary);margin:12px 0}
+details{border-bottom:1px solid var(--rule);padding:13px 0}
+summary{cursor:pointer;font-size:.88rem;font-weight:600}
+details p{max-width:80ch;color:var(--secondary);font-size:.89rem;line-height:1.65}
+code{font-family:var(--mono);font-size:.93em;overflow-wrap:anywhere}
+footer{margin-top:23px;display:flex;gap:18px;flex-wrap:wrap;color:var(--secondary);font-size:.82rem}
+@media(max-width:650px){
+ body{padding-inline:14px}.toolbar,.probe{padding:12px 13px}.score-view,.state-view{padding:15px 12px}
+ .views{display:block}.state-view{display:grid;grid-template-columns:auto 88px 1fr;align-items:center;gap:5px;border-left:0;border-top:1px solid var(--rule)}#state{height:80px}
+ .state-view .panel-title,.prob{margin:0}.formula{margin-left:0}.probe{gap:8px}#prediction{width:100%;margin:0}
+ .metrics{gap:0}.metric,.metric+.metric{padding:12px 6px}dt{font-size:.75rem}
+ #scores text{font-size:16px}fieldset legend{margin-right:8px}.score-view .legend{font-size:.74rem}
+}
+
+  </style>
+</head>
+<body>
+  <nav aria-label="Portfolio"><a href="https://github.com/asp123-cyber">← Ashish Patel</a><a href="https://github.com/asp123-cyber/asp123-cyber/tree/main/lab">Source &amp; method ↗</a></nav>
+  <main>
+    <header>
+      <p class="eyebrow">Quantum machine learning</p>
+      <h1>One qubit, <em>two classes.</em></h1>
+      <p class="intro">Classify angles on a circle with a single simulated qubit. Switch the encoding from 1× to 2× and see which model recovers the pattern.</p>
+    </header>
+    <noscript><p>Enable JavaScript for the controls. The <a href="https://github.com/asp123-cyber/asp123-cyber/tree/main/lab">method and reference results</a> are also readable on GitHub.</p></noscript>
+    <section class="experiment" aria-label="Interactive encoding experiment">
+      <div class="toolbar">
+        <fieldset>
+          <legend>Encoding winding</legend>
+          <label><input type="radio" name="winding" value="1"><span>1×</span></label>
+          <label><input type="radio" name="winding" value="2" checked><span>2×</span></label>
+          <label><input type="radio" name="winding" value="3"><span>3×</span></label>
+        </fieldset>
+        <span id="gate" class="formula" aria-label="State preparation"></span>
+      </div>
+      <div class="views">
+        <div class="score-view">
+          <h2 class="panel-title">Decision scores</h2>
+          <svg id="scores" viewBox="0 0 620 208" role="img" aria-labelledby="scores-title scores-description">
+            <title id="scores-title">Decision scores by input angle</title>
+            <desc id="scores-description">The solid line is the fidelity model. The dashed line is the raw-angle linear baseline. Test labels are points at minus one or plus one. Zero is the classification threshold.</desc>
+            <g id="axes"></g><g id="samples"></g>
+            <path id="quantum-curve" class="quantum-line"/><path id="linear-curve" class="linear-line"/>
+            <line id="probe-line" class="cursor" y1="9" y2="169"/>
+            <circle id="probe-dot" r="4.6" fill="var(--purple)" stroke="var(--panel)" stroke-width="1.5"/>
+          </svg>
+          <p class="legend"><span><i class="sample-line"></i>Fidelity kernel</span><span><i class="sample-dash"></i>Linear baseline</span><span><i class="sample-dot">●</i>Test labels</span></p>
+        </div>
+        <div class="state-view">
+          <h2 class="panel-title">Probe state</h2>
+          <svg id="state" viewBox="0 0 160 142" role="img" aria-labelledby="state-title">
+            <title id="state-title">Qubit on the X–Z great circle of the Bloch sphere</title>
+            <circle cx="80" cy="71" r="48" fill="none" stroke="var(--grid)" stroke-width="1.5"/>
+            <path d="M24 71h112M80 17v108" stroke="var(--grid)" fill="none"/>
+            <text x="80" y="12" text-anchor="middle">|0⟩</text><text x="80" y="140" text-anchor="middle">|1⟩</text>
+            <text x="140" y="75">X</text>
+            <line id="state-arm" x1="80" y1="71" stroke="var(--warm)" stroke-width="2.5"/>
+            <circle id="state-tip" r="4.5" fill="var(--warm)"/><circle cx="80" cy="71" r="2.5" fill="var(--muted)"/>
+          </svg>
+          <p id="probability" class="prob"></p>
+        </div>
+      </div>
+      <div class="probe">
+        <label for="probe-angle">Probe angle</label>
+        <input id="probe-angle" type="range" min="-180" max="180" step="1" value="30" aria-describedby="prediction">
+        <output id="angle-readout" for="probe-angle"></output>
+        <span id="prediction"></span>
+      </div>
+    </section>
+    <section class="results" aria-labelledby="results-title">
+      <div class="result-head"><h2 id="results-title">Held-out predictions</h2><small>Correct classifications · 48 synthetic test angles</small></div>
+      <dl class="metrics">
+        <div class="metric"><dt>Qubit fidelity</dt><dd id="quantum-count"></dd></div>
+        <div class="metric"><dt>Classical Fourier</dt><dd id="fourier-count"></dd></div>
+        <div class="metric"><dt>Raw-angle linear</dt><dd id="linear-count"></dd></div>
+      </dl>
+      <p id="interpretation" aria-live="polite"></p>
+    </section>
+    <details>
+      <summary>Why do the fidelity and Fourier models agree?</summary>
+      <p>The encoding prepares <code>|ψ(x)⟩ = Rᵧ(mx)|0⟩</code>, where <code>m</code> is the winding. Its squared overlap is <code>K(x,z) = cos²[m(x−z)/2]</code>. The same value is the ordinary dot product of the three features <code>(1, cos(mx), sin(mx))/√2</code>.</p>
+      <p>Both models use ridge regression with the same penalty. The simulator fits the qubit model from its Gram matrix and fits the classical model independently from its three features. Their largest score difference on this test set is <strong id="agreement"></strong>.</p>
+    </details>
+    <details>
+      <summary>Data, training and limits</summary>
+      <p>Labels are given by <code>sign(cos(2x))</code>, with angles in radians. Training uses 64 angles and testing uses 48, from separately jittered regular grids spanning −π to π. Fixed seeds are 31415 and 27182. All three readouts use λ = 0.35 and predict class +1 for a score of zero or higher. The raw-angle baseline uses features <code>(1, x/π)</code>.</p>
+      <p>The literal factor of two in the labels is intentional. A 2× rotation supplies the matching harmonic. The other encodings show what happens when the feature map misses it. These observations concern this synthetic dataset and ideal statevectors.</p>
+    </details>
+  </main>
+  <footer><a href="https://github.com/asp123-cyber/asp123-cyber/tree/main/lab">Read the implementation</a><a href="https://github.com/asp123-cyber">Research profile</a></footer>
+  <script>
+"use strict";
+
+const PI = Math.PI;
+const ridgePenalty = 0.35;
+
+// Deterministic, independently jittered uniform grids on [-π, π).
+function observations(count, seed) {
+  let state = seed;
+  return Array.from({ length: count }, (_, i) => {
+    state = (Math.imul(1664525, state) + 1013904223) >>> 0;
+    const offset = 0.05 + 0.9 * state / 4294967296;
+    const x = -PI + 2 * PI * (i + offset) / count;
+    return { x, y: Math.cos(2 * x) >= 0 ? 1 : -1 };
+  });
+}
+
+function dot(left, right) {
+  return left.reduce((sum, value, i) => sum + value * right[i], 0);
+}
+
+function qubit(x, winding) {
+  const angle = winding * x / 2;
+  return [Math.cos(angle), Math.sin(angle)];
+}
+
+function fidelity(x, other, winding) {
+  return dot(qubit(x, winding), qubit(other, winding)) ** 2;
+}
+
+function fourier(x, winding) {
+  return [1, Math.cos(winding * x), Math.sin(winding * x)].map(v => v / Math.SQRT2);
+}
+
+function linear(x) {
+  return [1, x / PI];
+}
+
+// Cholesky factorization and two triangular solves. The ridge term makes A positive definite.
+function solvePositiveDefinite(matrix, rhs) {
+  const n = rhs.length;
+  const lower = Array.from({ length: n }, () => Array(n).fill(0));
+  for (let i = 0; i < n; i++) {
+    for (let j = 0; j <= i; j++) {
+      let value = matrix[i][j];
+      for (let k = 0; k < j; k++) value -= lower[i][k] * lower[j][k];
+      lower[i][j] = i === j ? Math.sqrt(value) : value / lower[j][j];
+    }
+  }
+
+  const forward = Array(n).fill(0);
+  for (let i = 0; i < n; i++) {
+    let value = rhs[i];
+    for (let k = 0; k < i; k++) value -= lower[i][k] * forward[k];
+    forward[i] = value / lower[i][i];
+  }
+  const result = Array(n).fill(0);
+  for (let i = n - 1; i >= 0; i--) {
+    let value = forward[i];
+    for (let k = i + 1; k < n; k++) value -= lower[k][i] * result[k];
+    result[i] = value / lower[i][i];
+  }
+  return result;
+}
+
+function fitKernel(rows, winding) {
+  const gram = rows.map((a, i) => rows.map((b, j) =>
+    fidelity(a.x, b.x, winding) + (i === j ? ridgePenalty : 0)
+  ));
+  const coefficients = solvePositiveDefinite(gram, rows.map(row => row.y));
+  return x => rows.reduce((sum, row, i) => sum + coefficients[i] * fidelity(row.x, x, winding), 0);
+}
+
+// Fit the two classical controls in feature space, independently of the fidelity implementation.
+function fitFeatures(rows, features) {
+  const design = rows.map(row => features(row.x));
+  const columns = design[0].map((_, j) => design.map(row => row[j]));
+  const targets = rows.map(row => row.y);
+  const gram = columns.map((a, i) => columns.map((b, j) => dot(a, b) + (i === j ? ridgePenalty : 0)));
+  const weights = solvePositiveDefinite(gram, columns.map(column => dot(column, targets)));
+  return x => dot(weights, features(x));
+}
+
+const training = observations(64, 31415);
+const heldOut = observations(48, 27182);
+
+function fit(winding) {
+  return {
+    quantum: fitKernel(training, winding),
+    fourier: fitFeatures(training, x => fourier(x, winding)),
+    linear: fitFeatures(training, linear)
+  };
+}
+
+function classOf(score) {
+  return score >= 0 ? 1 : -1;
+}
+
+function correctCount(predict) {
+  return heldOut.filter(row => classOf(predict(row.x)) === row.y).length;
+}
+
+const byId = id => document.getElementById(id);
+const svgNS = "http://www.w3.org/2000/svg";
+const radians = deg => deg * PI / 180;
+const leftEdge = 38, rightEdge = 606;
+const plotX = angle => leftEdge + (angle + PI) / (2 * PI) * (rightEdge - leftEdge);
+const plotY = score => 89 - 57 * score;
+const windingInputs = [...document.querySelectorAll("input[name=winding]")];
+const probe = byId("probe-angle");
+const cache = new Map();
+let winding = 2;
+let models;
+
+function addSvg(parent, name, attributes, text) {
+  const node = document.createElementNS(svgNS, name);
+  for (const [key, value] of Object.entries(attributes)) node.setAttribute(key, value);
+  if (text !== undefined) node.textContent = text;
+  parent.append(node);
+}
+
+function drawAxes() {
+  const axes = byId("axes");
+  for (const score of [-1, 0, 1]) {
+    const y = plotY(score);
+    addSvg(axes, "line", { x1: leftEdge, x2: rightEdge, y1: y, y2: y, class: score ? "grid-line" : "zero-line" });
+    addSvg(axes, "text", { x: leftEdge - 8, y: y + 4, "text-anchor": "end" }, String(score));
+  }
+  for (const degrees of [-180, -90, 0, 90, 180]) {
+    const x = plotX(radians(degrees));
+    addSvg(axes, "line", { x1: x, x2: x, y1: 9, y2: 169, class: "grid-line" });
+    const anchor = degrees === -180 ? "start" : degrees === 180 ? "end" : "middle";
+    addSvg(axes, "text", { x, y: 191, "text-anchor": anchor }, degrees + "°");
+  }
+  for (const { x, y } of heldOut) {
+    addSvg(byId("samples"), "circle", { cx: plotX(x), cy: plotY(y), r: 2.5, class: "truth" });
+  }
+}
+
+function curve(predict) {
+  return Array.from({ length: 181 }, (_, i) => {
+    const angle = radians(-180 + 2 * i);
+    return (i ? "L" : "M") + plotX(angle).toFixed(2) + " " + plotY(predict(angle)).toFixed(2);
+  }).join(" ");
+}
+
+function drawProbe() {
+  const degrees = Number(probe.value);
+  const x = radians(degrees);
+  const score = models.quantum(x);
+  const plottedX = plotX(x);
+  byId("probe-line").setAttribute("x1", plottedX);
+  byId("probe-line").setAttribute("x2", plottedX);
+  byId("probe-dot").setAttribute("cx", plottedX);
+  byId("probe-dot").setAttribute("cy", plotY(score));
+
+  const stateX = 80 + 48 * Math.sin(winding * x);
+  const stateY = 71 - 48 * Math.cos(winding * x);
+  byId("state-arm").setAttribute("x2", stateX);
+  byId("state-arm").setAttribute("y2", stateY);
+  byId("state-tip").setAttribute("cx", stateX);
+  byId("state-tip").setAttribute("cy", stateY);
+  byId("probability").textContent = "P(1) = " + (qubit(x, winding)[1] ** 2).toFixed(3);
+  byId("angle-readout").textContent = degrees + "°";
+  probe.setAttribute("aria-valuetext", degrees + " degrees");
+  byId("prediction").textContent = "Fidelity score " + score.toFixed(3) + " · class " + (classOf(score) > 0 ? "+1" : "−1");
+}
+
+function selectWinding(value) {
+  winding = value;
+  if (!cache.has(value)) cache.set(value, fit(value));
+  models = cache.get(value);
+  for (const input of windingInputs) input.checked = Number(input.value) === value;
+  for (const name of ["quantum", "fourier", "linear"]) byId(name + "-count").textContent = correctCount(models[name]) + " / " + heldOut.length;
+  byId("gate").textContent = value === 1 ? "Rᵧ(x) |0⟩" : "Rᵧ(" + value + "x) |0⟩";
+  byId("quantum-curve").setAttribute("d", curve(models.quantum));
+  byId("linear-curve").setAttribute("d", curve(models.linear));
+  byId("interpretation").textContent = value === 2
+    ? "At 2×, both periodic models recover the two-cycle class pattern. The matched classical features reproduce the qubit model’s scores."
+    : "At " + value + "×, the encoding misses the two-cycle pattern. The matched classical model makes the same predictions as the qubit model.";
+  const error = Math.max(...heldOut.map(row => Math.abs(models.quantum(row.x) - models.fourier(row.x))));
+  byId("agreement").textContent = error.toExponential(2);
+  drawProbe();
+}
+
+drawAxes();
+const initialWinding = Number(new URLSearchParams(window.location.search).get("w"));
+selectWinding([1, 2, 3].includes(initialWinding) ? initialWinding : 2);
+for (const input of windingInputs) input.addEventListener("change", () => selectWinding(Number(input.value)));
+probe.addEventListener("input", drawProbe);
+byId("scores").addEventListener("click", event => {
+  const view = byId("scores").getScreenCTM();
+  if (!view) return;
+  const point = new DOMPoint(event.clientX, event.clientY).matrixTransform(view.inverse());
+  const t = Math.min(1, Math.max(0, (point.x - leftEdge) / (rightEdge - leftEdge)));
+  probe.value = Math.round(t * 360 - 180);
+  drawProbe();
+});
+
+  </script>
+</body>
+</html>
