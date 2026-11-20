@@ -4,7 +4,7 @@
   <img src="assets/research-header.svg" width="100%" alt="Ashish Patel · M.Sc. Physics, IIT Indore · Research interests in quantum computing and machine learning">
 </picture>
 
-I’m looking for a supervised M.Sc. project in **quantum computing or machine learning**. My background is in cosmological inference and experimental materials. I’m especially interested in how the way we encode data changes the patterns a model can learn.
+I’m looking for a project in **quantum computing or machine learning**. My background is in cosmological inference and experimental materials. I’m especially interested in how the way we encode data changes the patterns a model can learn.
 
 ## One qubit, two classes
 
