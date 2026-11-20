@@ -1,42 +1,80 @@
 <picture>
-  <img src="assets/research-header.svg" width="100%" alt="Ashish Patel · M.Sc. Physics, IIT Indore · Computational cosmology and experimental materials physics">
+  <source media="(prefers-color-scheme: light)" srcset="assets/research-header-light.svg">
+  <img src="assets/research-header.svg" width="100%" alt="Ashish Patel · M.Sc. Physics, IIT Indore · Computational cosmology and experimental materials">
 </picture>
 
-At the D. S. Kothari Centre, I used Python to model the expansion of the universe from Type Ia supernova distances. Our team compared two cosmological models using ensemble MCMC.  
-At ARSD College, University of Delhi, I synthesized lead-free **NKLN–BT piezoelectric ceramics**, identified the perovskite phase by X-ray diffraction, and examined grain morphology by field-emission scanning electron microscopy (FESEM).  
-I presented the ceramics results at **RAFM-2026**, where the work received the **Best Oral Presentation Award**.
+[Research](#research)　·　[Try a notebook](#try-a-notebook)　·　[Software](#software)　·　[Background](#background)
 
-## What do the Pantheon supernovae tell us about H₀?
+## Research
 
-Our [cosmology notebooks](https://github.com/asp123-cyber/DSKC) follow the supernova measurements from apparent magnitude to luminosity distance and then to a joint posterior. The two fits give similar median expansion rates, while the median density of the additional fluid changes sign.
+I use supernova distances to study cosmic expansion and synthesize lead-free ceramics to study how their structure shapes their electrical response.
 
 <table>
 <tr>
-<td width="50%" valign="top"><strong>Case I · n = 1</strong><br>Fixed curvature Ω<sub>k</sub> = −0.053</td>
-<td width="50%" valign="top"><strong>Case II · n = 2.5</strong><br>Fixed curvature Ω<sub>k</sub> = +0.132</td>
-</tr>
-<tr>
-<td valign="top"><a href="https://github.com/asp123-cyber/DSKC/blob/main/Programs/Paper%20K%20%5Bn%3D1%5D.ipynb"><img src="assets/posterior-n1.png" width="100%" alt="Case I joint posterior for x, y and dark-energy density, with a negative x–y correlation"></a></td>
-<td valign="top"><a href="https://github.com/asp123-cyber/DSKC/blob/main/Programs/Paper%20K%5Bn%3D2.5%5D.ipynb"><img src="assets/posterior-n25.png" width="100%" alt="Case II joint posterior for x, y and dark-energy density at fixed positive curvature"></a></td>
-</tr>
-<tr>
-<td valign="top">H₀ = <strong>74.86</strong> (+0.26 / −0.26) km s⁻¹ Mpc⁻¹<br>Median extra-fluid density Ωₙ = +0.229<br><a href="https://github.com/asp123-cyber/DSKC/blob/main/Programs/Paper%20K%20%5Bn%3D1%5D.ipynb">Read the Case I notebook ↗</a></td>
-<td valign="top">H₀ = <strong>74.65</strong> (+0.23 / −0.24) km s⁻¹ Mpc⁻¹<br>Median extra-fluid density Ωₙ = −0.024<br><a href="https://github.com/asp123-cyber/DSKC/blob/main/Programs/Paper%20K%5Bn%3D2.5%5D.ipynb">Read the Case II notebook ↗</a></td>
+<td width="50%" valign="top">
+<sub>COMPUTATIONAL COSMOLOGY</sub>
+<h3>How fast is the universe expanding?</h3>
+At the D. S. Kothari Centre, our team fitted two cosmological models to Pantheon supernova distances. Both gave H₀ near 74.7 km s⁻¹ Mpc⁻¹ under our chosen calibration and priors.
+<br><br>
+<a href="https://github.com/asp123-cyber/DSKC"><strong>Explore the analysis ↗</strong></a>
+</td>
+<td width="50%" valign="top">
+<sub>EXPERIMENTAL MATERIALS</sub>
+<h3>From ceramic powder to a piezoelectric</h3>
+At ARSD College, University of Delhi, I synthesized lead-free NKLN–BT ceramics, identified the perovskite phase by X-ray diffraction, and examined grain morphology with electron microscopy.
+<br><br>
+<strong>Best Oral Presentation</strong> · RAFM-2026
+</td>
 </tr>
 </table>
 
-The panels are saved outputs from our replication study. The sampled coordinates are (x = H₀²/Ωₘ), (y = H₀²Ωₘ), and ΩΛ. The quoted H₀ intervals span the 16th–84th percentiles under a fixed supernova absolute magnitude of −19.220 and a Gaussian prior on y. Both curvature and the fluid exponent differ between cases.
+<details>
+<summary><strong>Compare the two cosmology runs</strong></summary>
 
-## Methods I use
+Both runs fixed the supernova absolute magnitude at −19.220 and used a Gaussian prior on the matter-density combination ΩₘH₀². Curvature and the fluid exponent changed together. The intervals below are the 16th–84th posterior percentiles.
 
-**Scientific computing**  
-![Python](https://img.shields.io/badge/Python-263444?style=flat-square) ![NumPy](https://img.shields.io/badge/NumPy-263444?style=flat-square) ![SciPy](https://img.shields.io/badge/SciPy-263444?style=flat-square) ![Matplotlib](https://img.shields.io/badge/Matplotlib-263444?style=flat-square)
+| Fluid exponent | Fixed curvature Ωₖ | H₀ (km s⁻¹ Mpc⁻¹) | Source |
+|---|---:|---:|---|
+| n = 1 | −0.053 | 74.86 (+0.26 / −0.26) | [Notebook and corner plot](https://github.com/asp123-cyber/DSKC/blob/main/Programs/Paper%20K%20%5Bn%3D1%5D.ipynb) |
+| n = 2.5 | +0.132 | 74.65 (+0.23 / −0.24) | [Notebook and corner plot](https://github.com/asp123-cyber/DSKC/blob/main/Programs/Paper%20K%5Bn%3D2.5%5D.ipynb) |
 
-**Statistical inference**  
-![emcee](https://img.shields.io/badge/emcee-20423E?style=flat-square) ![Ensemble MCMC](https://img.shields.io/badge/Ensemble_MCMC-20423E?style=flat-square) ![corner.py](https://img.shields.io/badge/corner.py-20423E?style=flat-square)
+</details>
 
-**Experimental materials**  
-![X-ray diffraction](https://img.shields.io/badge/X--ray_diffraction-40344C?style=flat-square) ![FESEM](https://img.shields.io/badge/FESEM-40344C?style=flat-square) ![Dielectric measurements](https://img.shields.io/badge/Dielectric_measurements-40344C?style=flat-square)
+<details>
+<summary><strong>Follow the ceramics experiment</strong></summary>
+
+| Stage | What I did |
+|---|---|
+| Synthesis | Prepared the lead-free ceramic by solid-state reaction, with controlled calcination and sintering. |
+| Structure | Used X-ray diffraction for phase identification and field-emission scanning electron microscopy to examine grain morphology. |
+| Electrical response | Measured dielectric, ferroelectric, and piezoelectric properties. |
+
+DBT-STAR project under Dr. Abid Hussain, September 2024–May 2026.
+
+</details>
+
+## Try a notebook
+
+**Estimate π by sampling random points.** My notebook starts with 10,000 points in a unit square. Change `n` to 1,000 (`n = 1000`), run the first code cell, then try 10,000 again. Watch how the running estimate settles as the sample grows. The next example repeats the experiment in three dimensions.
+
+[**Open in Colab ↗**](https://colab.research.google.com/github/asp123-cyber/DSKC/blob/main/Programs/1.%20Pi%20estimation%20using%20Monte%20Carlo.ipynb)　·　[Preview on GitHub](https://github.com/asp123-cyber/DSKC/blob/main/Programs/1.%20Pi%20estimation%20using%20Monte%20Carlo.ipynb)
+
+## Software
+
+**[LOGOS](https://github.com/asp123-cyber/LOGOS)** is a publishing app for long-form essays. Readers can explore articles and bookmark them. Authors have a writing workspace and a public profile. The React and TypeScript source shows how those flows fit together.
+
+[Explore the source](https://github.com/asp123-cyber/LOGOS/tree/main/src)　·　[Inspect the application routes](https://github.com/asp123-cyber/LOGOS/blob/main/src/App.tsx)
+
+## Background
+
+<details>
+<summary><strong>Methods &amp; tools</strong></summary>
+
+| Scientific computing | Statistical inference | Experimental physics |
+|---|---|---|
+| Python, NumPy, SciPy, Matplotlib | Metropolis–Hastings, ensemble MCMC with emcee, posterior visualization with corner | Solid-state synthesis, XRD, FESEM, electrical characterization |
+
+</details>
 
 <details>
 <summary><strong>Machine learning & selected workshops</strong></summary>
@@ -70,6 +108,7 @@ The panels are saved outputs from our replication study. The sampled coordinates
 </picture>
 </details>
 
+
 ---
 
-[Email](mailto:ashishpatel34520@gmail.com) · [LinkedIn](https://www.linkedin.com/in/ashish-patel-646521292)
+**Contact**　[Email](mailto:ashishpatel34520@gmail.com)　·　[LinkedIn](https://www.linkedin.com/in/ashish-patel-646521292)
