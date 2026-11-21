@@ -1,5 +1,7 @@
 # One qubit, two classes
 
+This is supplementary educational material for the portfolio, not a claim of original quantum-ML research or quantum advantage. For the introductory gate and ML/vision illustrations, start with the [learning notes](../docs/LEARNING-NOTES.md).
+
 An interactive, noiseless simulation of a fidelity kernel classifier on angles. Change the winding and compare held-out predictions against a raw-angle linear model and an independently fitted, analytically equivalent classical Fourier model.
 
 [Open the live experiment ↗](https://asp123-cyber.github.io/asp123-cyber/lab/) · [Read the source](index.html) · [Download the standalone HTML](https://raw.githubusercontent.com/asp123-cyber/asp123-cyber/main/lab/index.html)
@@ -43,3 +45,4 @@ Download `index.html` and open it in a modern browser. Everything needed to repr
 ## Reference
 
 Havlíček et al. (2019), *Supervised learning with quantum-enhanced feature spaces*, [Nature 567, 209–212](https://doi.org/10.1038/s41586-019-0980-2). This demonstration uses a simpler one-qubit feature map.
+
