@@ -26,6 +26,8 @@ This is a recommendation; editing the README does not change GitHub's native pin
 
 ## Preview the visual system
 
+[Published GitHub README preview](previews/profile-live.jpg) — captured from the public profile after the update. Animated illustrations may be captured at their initial frame.
+
 [Desktop light](previews/visuals-light.png) · [Desktop dark](previews/visuals-dark.png) · [Compact light](previews/visuals-compact-light.png) · [Compact dark](previews/visuals-compact-dark.png)
 
 ![Light-theme preview of the actual header and scientific illustrations](previews/visuals-light.png)
@@ -55,3 +57,11 @@ Keep completed projects ahead of proposed directions. Add a skill only when supp
 The existing activity workflow and artwork remain available in the collapsed GitHub activity block. New profile artwork is generated locally and does not add a recurring workflow.
 
 GitHub rendering references: [Markdown and picture elements](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) · [markup sanitization](https://github.com/github/markup).
+
+## Verification on 21 November 2026
+
+- The 537-word README rendered on the public profile, with all three new images loaded successfully.
+- The SVG animation was observed progressing to its final frame in the browser; computed styles confirmed the ten-second animation.
+- All 21 local README image/file references resolved. SVG XML, matching disclosure/picture elements, and the generator's numerical checks passed.
+- Light and dark text contrast met a 4.5:1 minimum for the artwork's main text colors. Desktop and 400-pixel compact artwork were visually inspected. Full mobile-device browser emulation was not performed.
+- The existing interactive lab opened at its established URL.
