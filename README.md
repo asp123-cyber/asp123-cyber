@@ -64,4 +64,4 @@ I synthesized NKLN–BT ceramics, identified the perovskite phase with X-ray dif
 
 ---
 
-[CV]().　[Email](mailto:ashishpatel34520@gmail.com)　·　[LinkedIn](https://www.linkedin.com/in/ashish-patel-646521292)
+[CV](https://drive.google.com/file/d/1OilklHdq4kDymTDC4mPz0Fq06UnjYSVQ/view?usp=sharing).　[Email](mailto:ashishpatel34520@gmail.com)　·　[LinkedIn](https://www.linkedin.com/in/ashish-patel-646521292)
